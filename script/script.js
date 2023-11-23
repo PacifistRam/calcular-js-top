@@ -19,14 +19,42 @@ numberButtons.forEach(button => {
     })
 })
 
-
+operatorButtons.forEach(button => {
+    button.addEventListener('click',(e)=> {
+        let operator = e.target.textContent;
+        //console.log(`You have Pressed ${operator}`);
+        if(numberOne === 0)
+        {
+        numberOne = parseInt(displayPrimary.value)
+        displayPrimary.value = ""
+        console.log(`number One: ${numberOne}`)
+        }
+        else if (numberTwo === 0)
+        {
+        numberTwo = parseInt(displayPrimary.value)
+        displayPrimary.value = ""
+        console.log(`number Two: ${numberTwo}`)
+        }
+        else if(numberOne != 0 && numberTwo != 0)
+        {
+            calculate(operator);
+        }
+    })
+})
 
 
 clearButton.addEventListener('click' , () => {
     clearText();
 })
 
-
+function calculate(operator)
+{
+    switch(operator) {
+        case '+':
+            let sum = numberOne + numberTwo;
+            displayPrimary.value = sum.toString()
+    }
+}
 function clearText (){
     displayPrimary.value = "";
 }
