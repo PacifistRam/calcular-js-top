@@ -9,6 +9,7 @@ const dotButton = document.querySelector('.dot-btn')
 const equalToButton = document.querySelector('.equal-btn')
 const clearButton = document.querySelector('.clear-btn')
 const signButton = document.querySelector('.sign-btn')
+const delButton = document.querySelector('.del-btn')
 
 
 let numberOne = 0;
@@ -19,7 +20,7 @@ let operatorClicked = false;
 let error = false;
 
 displayPrimary.value = "";
-
+///////////////////EventListeners///////////////////
 numberButtons.forEach(button => {
     
    if(!error)
@@ -40,7 +41,7 @@ operatorButtons.forEach(button => {
     button.addEventListener('click',(e)=> {
         if (e.target) {
             operator = e.target.textContent;
-            console.log(operator);
+           
             if (displayPrimary.value != "") {
 
                 if(numberOne === 0) {
@@ -99,6 +100,21 @@ signButton.addEventListener('click', () => {
     }
 });
 
+delButton.addEventListener('click',() => {
+    if(!error) {
+        if (displayPrimary.value != result)
+        {
+
+            displayPrimary.value = displayPrimary.value.slice(0,-1);
+        }
+    }
+})
+
+
+
+
+///////////////////Functions////////////////////////////////////
+/*  function for removing trailing Zeros */
 function formatNumber(num) {
     const formattedNum = parseFloat(num).toString();
     const [integerPart, decimalPart] = formattedNum.split('.');
@@ -120,16 +136,16 @@ function calculate(operator)
         switch(operator) {
             case '+':
                 result = numberOne + numberTwo;
-               
+                displayPrimary.value = formatNumber(result.toFixed(5));
                 break;
             
             case '-':
                 result = numberOne - numberTwo;
-               
+                displayPrimary.value = result.toFixed(5);
                 break;
             case '*':
                 result = numberOne * numberTwo;
-              
+                displayPrimary.value = formatNumber(result.toFixed(5));
                 break;
             case '/':
                 if (numberTwo === 0)
@@ -142,11 +158,10 @@ function calculate(operator)
                 else
                 {
                     result = numberOne / numberTwo;
-                   
+                    displayPrimary.value = formatNumber(result.toFixed(5));
                 }
                 break;
             }
-            displayPrimary.value = formatNumber(result.toFixed)(10);
             numberTwo = 0;
             numberOne = 0;
             operatorClicked = true;
@@ -158,6 +173,7 @@ function clearText (){
     displayPrimary.value = "";
     
 }
+
 
 function clearField () {
     numberOne = 0;
