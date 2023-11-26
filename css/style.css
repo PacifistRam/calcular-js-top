@@ -5,7 +5,7 @@
 }
 body {
     font-family: 'Poppins', sans-serif;
-    overflow: hidden;
+    
 }
 h1 {
     color: #db2777;
@@ -40,6 +40,7 @@ button {
     display: grid;
     padding: 1rem 2rem;
     grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(5, 1fr);
     grid-auto-rows: 80px;
     gap: 0.5rem;
     /* width: 60vh; */
@@ -85,8 +86,6 @@ button {
     color:#f8fafc;
 }
 
-
-#22c55e
 .operator-btn {
     background-color: #facc15 ;
 }
@@ -101,3 +100,50 @@ button {
     background-color: #ca8a04;
 }
 
+/* media queries */
+
+@media  (max-width: 790px) {
+    .main-container {
+        padding: 8rem 7rem;
+    }
+
+}
+@media  (max-width: 616px) {
+    .main-container {
+        padding: 8rem 7rem;
+    }
+    h1 {
+        font-size: 2.5rem;
+    }
+    .calculator-container {
+        grid-template-rows: repeat(5, 1fr);
+        grid-auto-rows: 73px;
+        min-width: 370px;
+    }
+
+}
+@media  (max-width: 378px) {
+    .main-container {
+        padding: 8rem 7rem;
+    }
+    h1 {
+        font-size: 2.5rem;
+    }
+    .calculator-container {
+        grid-template-rows: repeat(5, 1fr);
+        grid-auto-rows: 55px;
+       
+    }
+    .btn {
+        padding: 0.8rem;
+        width: 75px;
+        height: 75px;
+        transition: 0.1s;
+    }
+    .display {
+        font-size: 20px;
+        
+    }
+
+}
+    
